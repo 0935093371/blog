@@ -35,12 +35,12 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Iterable<Blog> findAllB1yCategory(Category category) {
-        return blogReponsitory.findAllByProvince(category);
+    public Iterable<Blog> findAllByCategory(Category category) {
+        return blogReponsitory.findAllByCategory(category);
     }
 
     @Override
     public Page<Blog> findAllByNameContaining(String name, Pageable pageable) {
-        return blogReponsitory.findAllByNameContaining(name, pageable);
+        return blogReponsitory.findAllByNameContaining(name,pageable);
     }
 }

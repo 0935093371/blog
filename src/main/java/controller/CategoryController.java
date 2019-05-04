@@ -19,7 +19,7 @@ public class CategoryController {
     @Autowired
     private BlogService blogService;
     @GetMapping("/categorys")
-    public ModelAndView listProvinces(){
+    public ModelAndView listCategorys(){
         Iterable<Category> categorys = categoryService.findAll();
         ModelAndView modelAndView = new ModelAndView("/category/list");
         modelAndView.addObject("categorys", categorys);

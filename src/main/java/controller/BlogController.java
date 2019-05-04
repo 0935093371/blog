@@ -2,7 +2,6 @@ package controller;
 
 import model.Blog;
 import model.Category;
-import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.BlogService;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 import service.CategoryService;
+
+import java.util.Optional;
 
 @Controller
 public class BlogController {
@@ -37,7 +36,7 @@ public class BlogController {
     public ModelAndView listBlogs(@RequestParam("s") Optional<String> s, Pageable pageable){
         Page<Blog> blogs;
         if(s.isPresent()){
-            blogs = blogService.findAllByFirstNameContaining(s.get(), pageable);
+            blogs = blogService.findAllByNameContaining(s.get(), pageable);
         } else {
             blogs = blogService.findAll(pageable);
         }
@@ -51,9 +50,9 @@ public class BlogController {
         modelAndView.addObject("blog", new Blog());
         return modelAndView;
     }
-+
+
     @PostMapping("/create-blog")
-    public ModelAndView saveCustomer(@ModelAttribute("blog") Blog blog){
+    public ModelAndView saveBlog(@ModelAttribute("blog") Blog blog){
         blogService.save(blog);
         ModelAndView modelAndView = new ModelAndView("/blog/create");
         modelAndView.addObject("blog", new Blog());
@@ -76,7 +75,7 @@ public class BlogController {
     }
 
     @PostMapping("/edit-blog")
-    public ModelAndView updateCustomer(@ModelAttribute("blog") Blog blog){
+    public ModelAndView updateBlog(@ModelAttribute("blog") Blog blog){
         blogService.save(blog);
         ModelAndView modelAndView = new ModelAndView("/blog/edit");
         modelAndView.addObject("blog", blog);

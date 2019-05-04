@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface BlogReponsitory extends PagingAndSortingRepository<Blog, Long>{
-    Iterable<Blog> findAllByProvince(Category category);
-    Page<Blog> findAllByFirstNameContaining(String name, Pageable pageable);
+    Iterable<Blog> findAllByCategory(Category category);
+    Page<Blog> findAllByNameContaining(String name, Pageable pageable);
 
 }

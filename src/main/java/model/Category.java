@@ -43,7 +43,7 @@ public class Category {
             return blogs;
         }
 
-        public void setBlogs(List<Blog> customers) {
+        public void setBlogs(List<Blog> blogs) {
             this.blogs = blogs;
         }
     }

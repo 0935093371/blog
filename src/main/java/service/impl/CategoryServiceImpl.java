@@ -2,12 +2,12 @@ package service.impl;
 
 import model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
-import reponsitory.CategoryRepository;
+import reponsitory.CategoryReponsitory;
 import service.CategoryService;
 
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
-    private CategoryRepository categoryReponsitory;
+    private CategoryReponsitory categoryReponsitory;
 
     @Override
     public Iterable<Category> findAll() {
