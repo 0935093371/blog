@@ -2,41 +2,45 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit customer</title>
+    <title>Edit blog</title>
 </head>
 <body>
-<h1>Edit customer</h1>
+<h1>Edit blog</h1>
 <p>
-    <a href="/customers">Customer list</a>
+    <a href="/blogs">Blog list</a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
-<form th:action="@{/edit-customer}" th:object="${customer}" method="post">
+<form th:action="@{/edit-blog}" th:object="${blog}" method="post">
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
-            <td>First name:</td>
-            <td><input type="text" th:field="*{firstName}"/></td>
+            <td>Title:</td>
+            <td><input type="text" th:field="*{title}"/></td>
         </tr>
         <tr>
-            <td>Last name:</td>
-            <td><input type="text" th:field="*{lastName}"/></td>
+            <td>Content:</td>
+            <td><input type="text" th:field="*{content}"/></td>
         </tr>
         <tr>
-            <td>Province:</td>
+            <td>Author:</td>
+            <td><input type="text" th:field="*{author}"/></td>
+        </tr>
+        <tr>
+            <td>Category:</td>
             <td>
-                <select name="province">
-                    <option th:each="p : ${provinces}"
+                <select name="category">
+                    <option th:each="p : ${category}"
                             th:value="${p.id}"
                             th:text="${p.name}"
-                            th:selected="(${p.id} == *{province.id})"></option>
+                            th:selected="(${p.id} == *{category.id})"></option>
                 </select>
             </td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Update customer"></td>
+            <td><input type="submit" value="Update blog"></td>
         </tr>
     </table>
 </form>

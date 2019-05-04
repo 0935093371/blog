@@ -2,20 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View province</title>
+    <title>View category</title>
 </head>
 <body>
-<h1>View province: <span th:text="${province.name}"></span></h1>
-<a href="/provinces">Province list</a>
+<h1>View category: <span th:text="${category.name}"></span></h1>
+<a href="/categorys">Category list</a>
 <table border="1">
     <tr>
-        <th>First name</th>
-        <th>Last name</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+
     </tr>
-    <th:block th:each="customer : ${customers}">
+    <th:block th:each="blog : ${blogs}">
         <tr>
-            <td th:text="${customer.firstName}"></td>
-            <td th:text="${customer.lastName}"></td>
+            <td th:text="${blog.title}"></td>
+            <td th:text="${blog.content}"></td>
+            <td th:text="${blog.author}"></td>
+
         </tr>
     </th:block>
 </table>
