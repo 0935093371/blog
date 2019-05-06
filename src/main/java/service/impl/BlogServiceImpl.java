@@ -41,6 +41,6 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Page<Blog> findAllByNameContaining(String name, Pageable pageable) {
-        return blogReponsitory.findAllByNameContaining(name,pageable);
+        return blogReponsitory.findAllByTitleContaining(name,pageable);
     }
 }

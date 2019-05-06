@@ -8,6 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface BlogReponsitory extends PagingAndSortingRepository<Blog, Long>{
     Iterable<Blog> findAllByCategory(Category category);
-    Page<Blog> findAllByNameContaining(String name, Pageable pageable);
+    Page<Blog> findAllByTitleContaining(String name, Pageable pageable);
 
 }
